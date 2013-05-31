@@ -12,6 +12,7 @@
     "consolidate": "",
     "pkgcloud":"",
     "async":"",
-    "gm":""
+    "gm":"",
+    "mime":""
   }
 }

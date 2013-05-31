@@ -31,12 +31,18 @@ Pages.prototype.index = function(req, res){
 
 	cdn.getStream('test', '1209121548a.jpg',forwarder, function (err, file) { console.log('done')});
 
+	/*var myFile = fs.createReadStream(__dirname+'/1209121548a.jpg');
+	cdn.saveStream( 'test', '1209121548a_resized5.jpg', myFile, function (saveErr, imageInfo) {
+		console.log(imageInfo);
+     res.render('index', { title: 'Express' });
+  });*/
 	imageMagick(forwarder)
 	.resize(600)
 	.stream(function (err, stdout, stderr) {
-		cdn.saveStream( 'test', '1209121548a_resized4.jpg', stdout, function (saveErr, imageInfo) {
+		console.log(stdout);
+		cdn.saveStream( 'test', 'wasula-and-son.jpg', stdout, function (saveErr, imageInfo) {
 			console.log(imageInfo);
-        res.render('index', { title: 'Express' });
+      res.render('index', { title: 'Express' });
     });
 	});
 };
